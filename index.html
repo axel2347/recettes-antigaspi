@@ -1,4 +1,3 @@
-@@ -1,934 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -514,6 +513,7 @@
     <div class="container">
         <!-- HEADER -->
         <header>
+            <h1>🍽�� Recettes Anti-Gaspi</h1>
             <h1>🍽️ Recettes Anti-Gaspi</h1>
             <p>Mangez bon, économisez plus ! Découvrez des recettes délicieuses et pas chères</p>
             
@@ -881,7 +881,7 @@
             localStorage.setItem('userRecipes', JSON.stringify(userRecipes));
 
             alert('✅ Recette soumise ! Elle sera validée et ajoutée prochainement.');
-            
+
             // Réinitialiser le formulaire
             document.getElementById('recipeName').value = '';
             document.getElementById('recipePrice').value = '';
@@ -914,7 +914,7 @@
         function switchTab(tabName) {
             // Masquer tous les sections
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            
+
             // Afficher la section active
             document.getElementById(tabName).classList.add('active');
 

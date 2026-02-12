@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recettes Anti-Gaspillage | Moins de 10€</title>
+<meta name="description" content="Trouvez des recettes faciles avec les ingrédients que vous avez chez vous. Recettes anti-gaspillage pour étudiants et familles à moins de 10€.">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f7f5;
+    text-align: center;
+}
+
+header {
+    background: #4CAF50;
+    color: white;
+    padding: 20px;
+}
+
+input {
+    padding: 12px;
+    width: 60%;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 20px;
+    background: #ff9800;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.recipe {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🥕 Recettes Anti-Gaspillage</h1>
+<p>Trouvez une recette avec ce que vous avez chez vous</p>
+</header>
+
+<br>
+
+<input id="ingredients" placeholder="Ex : oeufs, riz, tomate">
+<button onclick="search()">Trouver recette</button>
+
+<div id="results"></div>
+
+<script>
+const recipes = [
+    {
+        ingredients: ["oeufs","fromage"],
+        name: "Omelette au fromage",
+        price: "3€",
+        link: "https://www.marmiton.org/recettes/recette_omelette-au-fromage_22451.aspx"
+    },
+    {
+        ingredients: ["riz","tomate"],
+        name: "Riz à la tomate",
+        price: "4€",
+        link: "https://www.marmiton.org/recettes/recette_riz-a-la-tomate_22360.aspx"
+    },
+    {
+        ingredients: ["poulet","riz"],
+        name: "Poulet et riz simple",
+        price: "7€",
+        link: "https://www.marmiton.org/recettes/recette_poulet-riz_18139.aspx"
+    }
+];
+
+function search() {
+    let input = document.getElementById("ingredients").value.toLowerCase();
+    let userIngredients = input.split(",").map(i => i.trim());
+
+    let results = "";
+    recipes.forEach(recipe => {
+        let match = recipe.ingredients.some(i => userIngredients.includes(i));
+        if(match){
+            results += `
+            <div class="recipe">
+                <h2>${recipe.name}</h2>
+                <p>💰 Coût : ${recipe.price}</p>
+                <a href="${recipe.link}" target="_blank">Voir la recette</a>
+            </div>`;
+        }
+    });
+
+    document.getElementById("results").innerHTML = results || "<p>Aucune recette trouvée 😢</p>";
+}
+</script>
+
+</body>
+</html>

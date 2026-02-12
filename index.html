@@ -48,6 +48,40 @@
             font-size: 1.2em;
             color: #b8869f;
             font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        /* ===== CREATOR BADGE ===== */
+        .creator-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff8c5a 0%, #ff6b9d 100%);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(255, 140, 90, 0.3);
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .creator-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 140, 90, 0.4);
+            background: linear-gradient(135deg, #ff7845 0%, #ff5a8d 100%);
+        }
+
+        .creator-badge a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* ===== NAVIGATION TABS ===== */
@@ -438,6 +472,11 @@
                 font-size: 2em;
             }
 
+            .creator-badge {
+                font-size: 0.95em;
+                padding: 10px 20px;
+            }
+
             .search-grid,
             .form-grid {
                 grid-template-columns: 1fr;
@@ -474,8 +513,16 @@
     <div class="container">
         <!-- HEADER -->
         <header>
-            <h1>🍽�� Recettes Anti-Gaspi</h1>
+            <h1>🍽️ Recettes Anti-Gaspi</h1>
             <p>Mangez bon, économisez plus ! Découvrez des recettes délicieuses et pas chères</p>
+            
+            <!-- CREATOR BADGE -->
+            <div class="creator-badge">
+                <span>▶️ par</span>
+                <a href="https://www.youtube.com/@axelkitchen" target="_blank" rel="noopener noreferrer">
+                    <strong>axelkitchen</strong> sur YouTube
+                </a>
+            </div>
         </header>
 
         <!-- NAVIGATION TABS -->

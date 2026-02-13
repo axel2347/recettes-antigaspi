@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recettes Antigaspi</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+}
+
+.recettes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.recette {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.recette:hover {
+  transform: scale(1.05);
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.modal.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 400px;
+  animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Recettes Antigaspi</h1>
+
+<div class="recettes">
+
+  <div class="recette"
+       data-title="Soupe antigaspi"
+       data-desc="Une soupe faite avec des légumes abîmés."
+       data-details="Temps : 30 min|Difficulté : Facile|Ingrédients : légumes restants">
+    <h3>Soupe antigaspi</h3>
+  </div>
+
+  <div class="recette"
+       data-title="Pain perdu"
+       data-desc="Recette parfaite pour recycler du pain dur."
+       data-details="Temps : 15 min|Difficulté : Facile|Ingrédients : pain, œufs, lait">
+    <h3>Pain perdu</h3>
+  </div>
+
+</div>
+
+<br><br>
+
+<a href="https://www.youtube.com/@axselkiten" target="_blank">
+  🎥 Chaîne YouTube Axselkiten
+</a>
+
+<!-- MODAL -->
+<div id="recipeModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="recipeTitle"></h2>
+    <p id="recipeDesc"></p>
+    <ul id="recipeDetails"></ul>
+  </div>
+</div>
+
+<script>
+const modal = document.getElementById("recipeModal");
+const closeBtn = document.querySelector(".close");
+
+document.querySelectorAll(".recette").forEach(card => {
+  card.addEventListener("click", () => {
+    document.getElementById("recipeTitle").textContent = card.dataset.title;
+    document.getElementById("recipeDesc").textContent = card.dataset.desc;
+
+    const detailsList = document.getElementById("recipeDetails");
+    detailsList.innerHTML = "";
+
+    card.dataset.details.split("|").forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      detailsList.appendChild(li);
+    });
+
+    modal.classList.add("show");
+  });
+});
+
+closeBtn.onclick = () => modal.classList.remove("show");
+
+window.onclick = (e) => {
+  if (e.target === modal) modal.classList.remove("show");
+};
+</script>
+
+</body>
+</html>
